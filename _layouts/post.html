@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<article class="post-page">
+  <nav class="breadcrumb" aria-label="현재 위치"><a href="{{ '/archive/' | relative_url }}">글 보관함</a><span aria-hidden="true">/</span><span>한 편의 글</span></nav>
+  <header class="post-header">
+    <div class="post-kicker">
+      {% if page.categories.size > 0 %}<span class="category-tag">{{ page.categories | first }}</span>{% endif %}
+      <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y.%m.%d' }}</time>
+    </div>
+    <h1>{{ page.title | escape }}</h1>
+    {% if page.description %}<p class="post-deck">{{ page.description | escape }}</p>{% endif %}
+    <div class="post-header-rule"></div>
+  </header>
+  <div class="post-body">{{ content }}</div>
+  <div class="post-end-mark" aria-hidden="true">✳</div>
+  <nav class="post-bottom-nav" aria-label="글 탐색">
+    <a href="{{ '/archive/' | relative_url }}">← 모든 글 보기</a>
+    <a href="{{ '/' | relative_url }}">첫 화면으로 ↑</a>
+  </nav>
+</article>

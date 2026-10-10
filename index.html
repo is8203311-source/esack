@@ -1,0 +1,52 @@
+---
+layout: default
+title: 첫 화면
+---
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow"><span class="eyebrow-line"></span> 개인 기록 아카이브</div>
+    <h1>생각을 모아,<br><em>오래 간직할</em> 곳.</h1>
+    <p>질문에서 시작된 글, 읽다가 멈춰 선 문장, 미처 다 마치지 못한 사색까지. 날짜와 주제에 따라 차곡차곡 보관합니다.</p>
+    <a class="primary-link" href="{{ '/archive/' | relative_url }}">글 보관함 둘러보기 <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <div class="hero-art-frame">
+      <div class="arch-caption">A FIELD OF THOUGHT</div>
+      <svg viewBox="0 0 320 380" role="presentation" class="wheat-art" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke-width="2.2" d="M161 345c-7-88-9-177 5-277M139 342c-13-67-43-133-81-201M176 342c26-72 60-140 101-195" />
+          <path stroke-width="1.6" d="M165 91c-18-18-27-38-29-58 19 11 29 25 29 58Zm0 13c18-17 28-32 31-51-18 7-29 22-31 51Zm-1 21c-21-14-35-34-39-52 24 9 37 25 39 52Zm-1 20c19-17 30-34 34-52-20 8-31 22-34 52Zm-1 25c-24-15-38-30-44-50 24 8 39 23 44 50Zm0 23c23-17 39-32 47-51-26 6-42 21-47 51Z" />
+          <path stroke-width="1.6" d="M91 201c-30-5-48-17-64-37 28 0 51 12 64 37Zm16 30c2-33-3-51-20-72-3 29 3 53 20 72Zm15 34c-35-3-56-13-75-31 34-3 57 6 75 31Zm12 31c7-34 4-54-8-78-9 28-7 54 8 78Z" />
+          <path stroke-width="1.6" d="M255 190c30-7 47-22 58-40-27 4-46 17-58 40Zm-13 29c2-31 10-52 29-69 0 30-8 51-29 69Zm-15 35c31-10 50-24 65-45-32 5-54 18-65 45Zm-14 31c-4-34 2-55 17-77 5 32 0 55-17 77Z" />
+          <path stroke-width="1.4" d="M164 244c-25-13-48-14-73-7 22 17 47 20 73 7Zm-4 46c28-20 50-25 75-23-23 21-47 28-75 23Zm-22-4c-20-15-43-19-62-18 19 18 39 23 62 18Z"/>
+          <path stroke-width="1" d="M27 335h266M39 346h240"/>
+        </g>
+      </svg>
+      <div class="arch-number">EST. 2026 <span>—</span> ESACK</div>
+    </div>
+  </div>
+</section>
+<section class="categories-section" aria-labelledby="category-heading">
+  <div class="section-heading"><div><span class="section-number">01 / 주제</span><h2 id="category-heading">생각의 갈래</h2></div><p>관심사에 따라 정리한 기록들</p></div>
+  <div class="category-grid">
+    <a class="category-card" href="{{ '/archive/' | relative_url }}?category=철학"><span class="category-index">01</span><strong>철학</strong><span class="category-desc">사유와 논증, 개념의 구조</span><span class="card-arrow" aria-hidden="true">↗</span></a>
+    <a class="category-card" href="{{ '/archive/' | relative_url }}?category=성경"><span class="category-index">02</span><strong>성경</strong><span class="category-desc">본문과 맥락을 읽는 기록</span><span class="card-arrow" aria-hidden="true">↗</span></a>
+    <a class="category-card" href="{{ '/archive/' | relative_url }}?category=문학"><span class="category-index">03</span><strong>문학</strong><span class="category-desc">시와 소설, 문장에 관한 생각</span><span class="card-arrow" aria-hidden="true">↗</span></a>
+    <a class="category-card" href="{{ '/archive/' | relative_url }}?category=비평"><span class="category-index">04</span><strong>비평</strong><span class="category-desc">현실과 주장에 대한 검토</span><span class="card-arrow" aria-hidden="true">↗</span></a>
+  </div>
+</section>
+<section class="recent-section" aria-labelledby="recent-heading">
+  <div class="section-heading"><div><span class="section-number">02 / 최근의 기록</span><h2 id="recent-heading">새로 담긴 글</h2></div><a class="underlined-link" href="{{ '/archive/' | relative_url }}">모든 글 보기 ↗</a></div>
+  {% if site.posts.size > 0 %}
+  <div class="post-list">
+    {% for post in site.posts limit: 6 %}
+    <a class="post-row" href="{{ post.url | relative_url }}">
+      <div class="post-row-info"><div class="post-meta">{% if post.categories.size > 0 %}<span>{{ post.categories | first }}</span><i aria-hidden="true">·</i>{% endif %}<time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y.%m.%d' }}</time></div><h3>{{ post.title | escape }}</h3>{% if post.description %}<p>{{ post.description | escape }}</p>{% endif %}</div><span class="post-row-arrow" aria-hidden="true">↗</span>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state"><span class="empty-icon" aria-hidden="true">✳</span><p>아직 보관된 글이 없습니다.</p><span>첫 글이 발행되면 이곳에 나타납니다.</span></div>
+  {% endif %}
+</section>
+<div class="bottom-quote"><span aria-hidden="true">“</span><p>쓰고 남긴 것은 언제든 다시 읽을 수 있다.</p><span aria-hidden="true">”</span></div>

@@ -1,0 +1,15 @@
+title: "이삭 보관통"
+description: "읽고, 생각하고, 오래 꺼내 볼 글들을 모으는 곳."
+url: "https://is8203311-source.github.io"
+baseurl: "/esack"
+lang: "ko"
+timezone: "Asia/Seoul"
+markdown: kramdown
+permalink: /writing/:year/:month/:day/:title/
+exclude:
+  - README.md
+  - GUIDE.md
+  - _templates
+  - vendor
+  - Gemfile
+  - Gemfile.lock

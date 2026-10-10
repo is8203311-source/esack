@@ -1,0 +1,30 @@
+---
+layout: default
+title: 글 보관함
+permalink: /archive/
+---
+<div class="inner-page-header">
+  <span class="section-number">ARCHIVE / 보관함</span>
+  <h1>글 보관함<span class="accent-dot">.</span></h1>
+  <p>쌓인 글을 날짜와 주제에 따라 찾아볼 수 있습니다.</p>
+  <div class="archive-overview">보관된 글 <strong>{{ site.posts.size }}</strong>편</div>
+</div>
+<section class="archive-content" aria-label="전체 글 목록">
+  <div class="archive-filters" role="group" aria-label="주제별 필터">
+    <button class="filter-button is-active" type="button" data-filter="전체" aria-pressed="true">전체</button>
+    <button class="filter-button" type="button" data-filter="철학" aria-pressed="false">철학</button>
+    <button class="filter-button" type="button" data-filter="성경" aria-pressed="false">성경</button>
+    <button class="filter-button" type="button" data-filter="문학" aria-pressed="false">문학</button>
+    <button class="filter-button" type="button" data-filter="비평" aria-pressed="false">비평</button>
+  </div>
+  <div class="post-list archive-posts">
+    {% for post in site.posts %}
+    <a class="post-row" href="{{ post.url | relative_url }}" data-post-category="{{ post.categories | first | escape }}">
+      <div class="post-row-info"><div class="post-meta">{% if post.categories.size > 0 %}<span>{{ post.categories | first }}</span><i aria-hidden="true">·</i>{% endif %}<time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y.%m.%d' }}</time></div><h2>{{ post.title | escape }}</h2>{% if post.description %}<p>{{ post.description | escape }}</p>{% endif %}</div><span class="post-row-arrow" aria-hidden="true">↗</span>
+    </a>
+    {% endfor %}
+  </div>
+  <div class="empty-state archive-empty" {% if site.posts.size > 0 %}hidden{% endif %}>
+    <span class="empty-icon" aria-hidden="true">✳</span><p>아직 이곳에 담긴 글이 없습니다.</p><span>다른 주제를 선택하거나 다음 글을 기다려 주세요.</span>
+  </div>
+</section>
